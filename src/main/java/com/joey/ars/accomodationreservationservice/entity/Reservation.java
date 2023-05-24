@@ -3,6 +3,9 @@ package com.joey.ars.accomodationreservationservice.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
@@ -11,14 +14,17 @@ import lombok.NoArgsConstructor;
 public class Reservation extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
-    @Column(length = 8, nullable = false)
-    private String start_date;
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate start_date;
 
-    @Column(length = 8, nullable = false)
-    private String end_date;
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate end_date;
+
+    private Boolean deleted;
 
     @ManyToOne
     @JoinColumn(name = "email")

@@ -14,11 +14,10 @@ import java.util.List;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer roomId;
+    private Long id;
 
     @Column(length = 12, nullable = false)
-    private String roomname;
+    private String name;
 
     @Column(length = 8, nullable = false)
     private String type;
@@ -26,8 +25,11 @@ public class Room {
     @Column(length = 12, nullable = false)
     private String price;
 
-    @Column(length = 128, nullable = false)
-    private String info;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String service;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String amenity;
 
     @OneToMany(mappedBy = "room")
     private List<Reservation> reservations = new ArrayList<>();

@@ -12,12 +12,11 @@ import java.util.List;
 @Entity
 @Table(name = "member")
 public class Member extends BaseTimeEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
-
     @Id
-    @Column(length = 48, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 48, unique = true, nullable = false)
     private String email;
 
     @Column(length = 28, nullable = false)
@@ -28,6 +27,11 @@ public class Member extends BaseTimeEntity {
 
     @Column(length = 14, nullable = false)
     private String phone;
+
+    @Column(length = 8, nullable = false)
+    private String rank;
+
+    private Boolean deleted;
 
     @OneToMany(mappedBy = "member")
     private List<Reservation> reservations  = new ArrayList<>();
