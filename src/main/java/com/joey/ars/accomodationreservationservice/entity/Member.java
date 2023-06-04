@@ -16,7 +16,7 @@ public class Member extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 48, unique = true, nullable = false)
+    @Column(length = 48, unique = true)
     private String email;
 
     @Column(length = 28, nullable = false)
@@ -25,13 +25,16 @@ public class Member extends BaseTimeEntity {
     @Column(length = 12, nullable = false)
     private String username;
 
-    @Column(length = 14, nullable = false)
+    @Column(length = 14)
     private String phone;
 
-    @Column(length = 8, nullable = false)
-    private String rank;
+    @Column(length = 8)
+    private String rank; // enum 타입 변경(userRoll)
 
-    private Boolean deleted;
+    private boolean deleted;
+
+    @OneToMany(mappedBy = "member")
+    private List<Question> questions;
 
     @OneToMany(mappedBy = "member")
     private List<Reservation> reservations  = new ArrayList<>();

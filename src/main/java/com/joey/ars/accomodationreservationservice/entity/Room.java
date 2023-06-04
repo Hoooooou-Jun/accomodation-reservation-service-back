@@ -31,6 +31,9 @@ public class Room {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String amenity;
 
+    @OneToMany(mappedBy = "room", orphanRemoval = true)
+    private List<RoomImage> roomImages;
+
     @OneToMany(mappedBy = "room")
     private List<Reservation> reservations = new ArrayList<>();
 }

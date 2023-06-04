@@ -15,4 +15,9 @@ public class Answer {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
+
+    @OneToOne(mappedBy = "answer")
+    private Question question;
+
+
 }

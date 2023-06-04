@@ -20,4 +20,12 @@ public class Question extends BaseTimeEntity {
     private String content;
 
     private Boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @OneToOne
+    @JoinColumn(name="answer_id")
+    private Answer answer;
 }
