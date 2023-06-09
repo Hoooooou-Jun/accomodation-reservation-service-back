@@ -36,6 +36,6 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member")
     private List<Question> questions;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member") // reservation이 연관관계 주인이므로 mappedBy 선언
     private List<Reservation> reservations  = new ArrayList<>();
 }

@@ -27,10 +27,10 @@ public class Reservation extends BaseTimeEntity {
     private Boolean deleted;
 
     @ManyToOne
-    @JoinColumn(name = "email")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "roomId")
+    @JoinColumn(name = "room_id")
     private Room room;
 }

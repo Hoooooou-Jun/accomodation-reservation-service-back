@@ -1,5 +1,6 @@
 package com.joey.ars.accomodationreservationservice.entity;
 
+import com.joey.ars.accomodationreservationservice.enums.QuestionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,15 @@ public class Question extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    private Boolean status;
+    private QuestionStatus status;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     @OneToOne
     @JoinColumn(name="answer_id")
