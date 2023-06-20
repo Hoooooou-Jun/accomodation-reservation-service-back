@@ -18,6 +18,4 @@ public class Answer {
 
     @OneToOne(mappedBy = "answer")
     private Question question;
-
-
 }

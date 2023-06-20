@@ -1,9 +1,8 @@
 package com.joey.ars.accomodationreservationservice.entity;
 
-import com.joey.ars.accomodationreservationservice.enums.MemberRank;
+import com.joey.ars.accomodationreservationservice.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ public class Member extends BaseTimeEntity {
     @Column(length = 48, unique = true)
     private String email;
 
-    @Column(length = 28, nullable = false)
     private String password;
 
     @Column(length = 12, nullable = false)
@@ -33,14 +31,14 @@ public class Member extends BaseTimeEntity {
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    private MemberRank rank; // enum 타입 변경(userRoll)
+    private Role role; // enum 타입 변경(userRoll)
 
     private boolean deleted;
 
     private String refreshToken;
 
     public void authorizeMember() {
-        this.rank = MemberRank.USER;
+        this.role = Role.USER;
     }
 
     public void passwordEncode(PasswordEncoder passwordEncoder) {

@@ -81,7 +81,7 @@ public class JwtAuthenticationProcessingFilter extends OncePerRequestFilter {
         UserDetails userDetailsMember = org.springframework.security.core.userdetails.User.builder()
                 .username(myMember.getEmail())
                 .password(myMember.getPassword())
-                .roles(myMember.getRank().name())
+                .roles(myMember.getRole().name())
                 .build();
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetailsMember, null, authoritiesMapper.mapAuthorities(userDetailsMember.getAuthorities()));

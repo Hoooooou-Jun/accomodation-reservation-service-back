@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
     private final MemberService memberService;
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
+
     @PostMapping("/register")
     public String register(@RequestBody MemberRegisterDto memberRegisterDto) throws Exception {
         memberService.register(memberRegisterDto);
