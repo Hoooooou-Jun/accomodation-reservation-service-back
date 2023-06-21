@@ -1,6 +1,7 @@
 package com.joey.ars.accomodationreservationservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,4 +34,13 @@ public class Reservation extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
+
+    @Builder
+    public Reservation(LocalDate start_date, LocalDate end_date, Boolean deleted, Member member_id, Room room_id) {
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.deleted = deleted;
+        this.member = member_id;
+        this.room = room_id;
+    }
 }
