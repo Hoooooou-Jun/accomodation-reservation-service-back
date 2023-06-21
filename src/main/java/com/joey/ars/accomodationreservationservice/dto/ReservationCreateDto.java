@@ -16,15 +16,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 public class ReservationCreateDto {
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate start_date;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate end_date;
     private Long member_id;
     private Long room_id;
 
     @Builder
-    public ReservationCreateDto(LocalDate start_date, LocalDate end_date, Long member_id, Long room_id ) {
+    public ReservationCreateDto(LocalDate start_date, LocalDate end_date, Long member_id, Long room_id) {
         this.start_date = start_date;
         this.end_date = end_date;
         this.member_id = member_id;
